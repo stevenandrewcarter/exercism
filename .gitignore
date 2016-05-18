@@ -83,3 +83,11 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+.vs
+.idea
+obj
+Debug
+*.db
+packages
+*.htm
