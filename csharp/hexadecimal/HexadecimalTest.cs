@@ -35,8 +35,7 @@ public class HexadecimalTest
   [TestCase("10", ExpectedResult = 16)]
   [TestCase("af", ExpectedResult = 175)]
   [TestCase("100", ExpectedResult = 256)]
-  [TestCase("19ace", ExpectedResult = 105166)]
-  [TestCase("19ace", ExpectedResult = 105166)]
+  [TestCase("19ace", ExpectedResult = 105166)]  
   public int Hexadecimal_converts_to_decimal(string hexadecimal)
   {
     return Hexadecimal.ToDecimal(hexadecimal);

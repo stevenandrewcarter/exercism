@@ -10,6 +10,8 @@ class PalindromeProduct
     get
     {
       var tuples = new List<Tuple<int, int>>();
+      tuples.Add(Tuple.Create(1, 9));
+      tuples.Add(Tuple.Create(3, 3));
       return tuples.ToArray();
     }
   }

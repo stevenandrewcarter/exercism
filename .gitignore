@@ -89,5 +89,6 @@ $RECYCLE.BIN/
 obj
 Debug
 *.db
+*.opendb
 packages
 *.htm

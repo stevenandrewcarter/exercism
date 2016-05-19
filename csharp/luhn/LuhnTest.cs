@@ -44,16 +44,15 @@ class Luhn
     for (var i = numberString.Length - 1; i >= 0; i--)
     {
       if (alternating)
-      {
-        alternating = false;
+      {        
         var addEnd = (int)char.GetNumericValue(numberString[i]) * 2;
         addEnds.Add(addEnd > 9 ? addEnd - 9 : addEnd);
       }
       else
-      {
-        alternating = true;
+      {       
         addEnds.Add((int)char.GetNumericValue(numberString[i]));
       }
+      alternating = !alternating;
     }
     addEnds.Reverse();    
     var sumEnds = addEnds.Sum();
