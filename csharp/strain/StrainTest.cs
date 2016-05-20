@@ -1,23 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
-using System;
 
 namespace Strain
-{
-  public static class ExtensionMethods
-  {
-    public static IEnumerable<T> Keep<T>(this IEnumerable<T> strain, Func<T, bool> predicate)
-    {
-      return strain.Where(x => predicate(x));
-    }
-
-    public static IEnumerable<T> Discard<T>(this IEnumerable<T> strain, Func<T, bool> predicate)
-    {
-      return strain.Where(x => !predicate(x));
-    }
-  }
-
+{  
   [TestFixture]
   public class StrainTest
   {

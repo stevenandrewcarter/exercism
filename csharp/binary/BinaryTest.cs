@@ -1,23 +1,4 @@
 using NUnit.Framework;
-using System;
-
-public class Binary
-{
-  public static int ToDecimal(string binary)
-  {
-    var result = 0.0;
-    for (var i = 0; i < binary.Length; i++)
-    {
-      if (char.IsLetter(binary[i]))
-        return 0;
-      else if (binary[i] == '1')
-        result += Math.Pow(2.0, binary.Length - (i + 1));
-      else if (binary[i] != '0')
-        return 0;
-    }
-    return (int)result;
-  }
-}
 
 [TestFixture]
 public class BinaryTest

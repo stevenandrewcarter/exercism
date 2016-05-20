@@ -1,56 +1,26 @@
 using NUnit.Framework;
-using System.Collections.Generic;
-using System.Linq;
-
-class Sieve
-{
-  public static int[] Primes(int limit)
-  {
-    var unmarked = new Dictionary<int, bool>();    
-    for (var i = 0; i < limit; i++)
-    {
-      unmarked.Add(i + 1, false);
-    }
-    for (var i = 2; i < limit; i++)
-    {
-      if (!unmarked[i])
-      {
-        var nextPosition = i;        
-        while (nextPosition <= limit)
-        {
-          nextPosition += i;
-          if (nextPosition <= limit)
-          {
-            unmarked[nextPosition] = true;            
-          }
-        }
-      }
-    }    
-    return unmarked.Where(i => i.Key != 1 && !i.Value).ToDictionary(p => p.Key, p => p.Value).Keys.ToArray();
-  }
-}
 
 [TestFixture]
 public class SieveTest
 {
-    [Test]
-    public void Finds_first_prime()
-    {
-        Assert.That(Sieve.Primes(2), Is.EqualTo(new[] { 2 }));
-    }
+  [Test]
+  public void Finds_first_prime()
+  {
+    Assert.That(Sieve.Primes(2), Is.EqualTo(new[] { 2 }));
+  }
 
-    [Test]
-    public void Finds_primes_up_to_10()
-    {
-        Assert.That(Sieve.Primes(10), Is.EqualTo(new[] { 2, 3, 5, 7 }));
-    }
+  [Test]
+  public void Finds_primes_up_to_10()
+  {
+    Assert.That(Sieve.Primes(10), Is.EqualTo(new[] { 2, 3, 5, 7 }));
+  }
 
-    [Test]
-    public void Finds_primes_up_to_1000()
-    {
-        Assert.That(Sieve.Primes(1000),
-            Is.EqualTo(new[]
-                {
+  [Test]
+  public void Finds_primes_up_to_1000()
+  {
+    Assert.That(Sieve.Primes(1000),
+        Is.EqualTo(new[]
+            {
                     2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101,
                     103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199,
                     211, 223, 227, 229, 233, 239, 241, 251, 257, 263, 269, 271, 277, 281, 283, 293, 307, 311, 313, 317,
@@ -60,6 +30,6 @@ public class SieveTest
                     709, 719, 727, 733, 739, 743, 751, 757, 761, 769, 773, 787, 797, 809, 811, 821, 823, 827, 829, 839,
                     853, 857, 859, 863, 877, 881, 883, 887, 907, 911, 919, 929, 937, 941, 947, 953, 967, 971, 977, 983,
                     991, 997
-                }));
-    }
+            }));
+  }
 }

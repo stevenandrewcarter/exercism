@@ -5,14 +5,6 @@ using NUnit.Framework;
 
 namespace Accumulate
 {
-  public static class ExtensionMethods
-  {
-    public static IEnumerable<T> Accumulate<T>(this IEnumerable<T> accumulate, Func<T, T> predicate)
-    {
-      return accumulate.Select(x => predicate(x));
-    }
-  }
-
   [TestFixture]
   public class AccumulateTest
   {
@@ -22,20 +14,20 @@ namespace Accumulate
     {
       Assert.That(new int[0].Accumulate(x => x * x), Is.EqualTo(new int[0]));
     }
-    
+
     [Test]
     public void Accumulate_squares()
     {
       Assert.That(new[] { 1, 2, 3 }.Accumulate(x => x * x), Is.EqualTo(new[] { 1, 4, 9 }));
     }
-    
+
     [Test]
     public void Accumulate_upcases()
     {
       Assert.That(new List<string> { "hello", "world" }.Accumulate(x => x.ToUpper()),
           Is.EqualTo(new List<string> { "HELLO", "WORLD" }));
     }
-    
+
     [Test]
     public void Accumulate_reversed_strings()
     {
@@ -49,7 +41,7 @@ namespace Accumulate
       Array.Reverse(array);
       return new string(array);
     }
-    
+
     [Test]
     public void Accumulate_within_accumulate()
     {
@@ -57,7 +49,7 @@ namespace Accumulate
           string.Join(" ", new[] { "1", "2", "3" }.Accumulate(d => c + d)));
       Assert.That(actual, Is.EqualTo(new[] { "a1 a2 a3", "b1 b2 b3", "c1 c2 c3" }));
     }
-    
+
     [Test]
     public void Accumulate_is_lazy()
     {

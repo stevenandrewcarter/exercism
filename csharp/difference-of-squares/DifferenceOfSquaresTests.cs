@@ -1,42 +1,6 @@
 ﻿using System;
 using NUnit.Framework;
 
-class Squares
-{
-  public Squares(int aMaxLimit)
-  {
-    if (aMaxLimit < 0) throw new ArgumentException();
-    maxLimit = aMaxLimit;
-  }
-
-  public int SquareOfSums()
-  {
-    var sum = 0;
-    for (var i = 1; i <= maxLimit; i++)
-    {
-      sum += i;
-    }
-    return (int)Math.Pow(sum, 2);
-  }
-
-  public int SumOfSquares()
-  {
-    var sum = 0;
-    for (var i = 1; i <= maxLimit; i++)
-    {
-      sum += (int)Math.Pow(i, 2);
-    }
-    return sum;
-  }
-
-  public int DifferenceOfSquares()
-  {
-    return SquareOfSums() - SumOfSquares();
-  }
-
-  private int maxLimit;
-}
-
 [TestFixture]
 public class DifferenceOfSquaresTests
 {
