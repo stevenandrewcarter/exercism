@@ -9,8 +9,7 @@ public class RobotSimulatorTest
     robot.TurnRight();
     Assert.That(robot.Bearing, Is.EqualTo(Bearing.North));
   }
-
-  [Ignore("Remove to run test")]
+  
   [Test]
   public void Turn_left_edge_case()
   {
@@ -18,8 +17,7 @@ public class RobotSimulatorTest
     robot.TurnLeft();
     Assert.That(robot.Bearing, Is.EqualTo(Bearing.West));
   }
-
-  [Ignore("Remove to run test")]
+  
   [Test]
   public void Robbie()
   {
@@ -32,7 +30,6 @@ public class RobotSimulatorTest
     Assert.That(robbie.Coordinate, Is.EqualTo(new Coordinate(0, 2)));
   }
 
-  [Ignore("Remove to run test")]
   [Test]
   public void Clutz()
   {
@@ -42,7 +39,6 @@ public class RobotSimulatorTest
     Assert.That(clutz.Coordinate, Is.EqualTo(new Coordinate(-4, 1)));
   }
 
-  [Ignore("Remove to run test")]
   [Test]
   public void Sphero()
   {
@@ -52,7 +48,6 @@ public class RobotSimulatorTest
     Assert.That(sphero.Coordinate, Is.EqualTo(new Coordinate(-3, -8)));
   }
 
-  [Ignore("Remove to run test")]
   [Test]
   public void Roomba()
   {

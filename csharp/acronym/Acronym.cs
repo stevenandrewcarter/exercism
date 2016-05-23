@@ -10,19 +10,17 @@
     }
     else
     {
-      var words = phrase.Split(' ');
+      var words = phrase.Split(new char[] { ' ', '-' });
       foreach (var word in words)
       {
-        result += char.ToUpper(word[0]);
+        result += word[0];
         for (var i = 1; i < word.Length; i++)
         {
           if (char.IsUpper(word[i]))
             result += word[i];
-          else if (word[i] == '-')
-            result += char.ToUpper(word[i + 1]);
         }
       }
     }
-    return result;
+    return result.ToUpper();
   }
 }
