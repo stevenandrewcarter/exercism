@@ -1,27 +1,39 @@
-var ArgumentError = function () {
+var WordProblem = function(text) {
+  this.text = text;
+  this.operators = {
+    "plus": '+',
+    "minus": '-',
+    "multiplied by": "*",
+    "divided by": "/"
+  };
+  this.form = new RegExp("^What is (-?\\d+(?: (?:" + Object.keys(this.operators).join("|") + ") -?\\d+)+)\\?$");
+}
 
+WordProblem.prototype.answer = function() {
+  if(!this.text.match(this.form))
+    throw new ArgumentError();
+  var tokens = this.tokenize();
+  return this.process(tokens);
 };
 
-module.exports.ArgumentError = ArgumentError;
-
-var WordNode = function (value) {
-  this.value = value;
+WordProblem.prototype.tokenize = function() {
+  var text = this.text.match(this.form)[1];
+  for(var operator in this.operators)
+    text = text.replace(new RegExp(operator, "g"), this.operators[operator]);
+  return text.split(" ");
 };
 
-WordNode.prototype.calculate = function () {
-
+WordProblem.prototype.process = function(tokens) {
+  var total = tokens.shift();
+  while(tokens.length > 0)
+    total = eval(total + " " + tokens.shift() + " " + tokens.shift());
+  return total;
 };
 
-var WordProblem = function (question) {
-  this.question = question.split(' ');
-};
+// An error
+var ArgumentError = function() {};
 
-WordProblem.prototype.answer = function () {
-  var answer = new WordNode();
-  for (var i = 0; i < this.question; i++) {
-
-  }
-  return answer.calculate();
-};
-
-module.exports.WordProblem = WordProblem;
+module.exports = {
+  WordProblem: WordProblem,
+  ArgumentError: ArgumentError
+}

@@ -12,12 +12,18 @@ class PalindromeProduct
 
   public void AddFactor(Tuple<int, int> aTuple)
   {
-    factors.Add(aTuple);
-    factors.Sort();
+    factors.Add(aTuple);    
   }
 
   public int Value { get; private set; }
-  public Tuple<int, int>[] Factors { get { return factors.ToArray(); } }
+  public Tuple<int, int>[] Factors
+  {
+    get
+    {
+      factors.Sort();
+      return factors.ToArray();
+    }
+  }
   private List<Tuple<int, int>> factors;
 }
 
@@ -80,7 +86,7 @@ class Palindrome
     return result[keys.First()];
   }
 
-  public static PalindromeProduct Smallest(int minValue, int maxValue = 0)
+  public static PalindromeProduct Smallest(int minValue, int maxValue)
   {
     var result = Generate(minValue, maxValue);
     var keys = result.Keys.ToList();
